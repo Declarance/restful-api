@@ -12,14 +12,14 @@ use App\Http\Resources\Film as FilmResource;
 class FilmController extends BaseController
 {
 
-    public function index()
+    public function index(): JsonResponse
     {
         $films = Film::all();
 
         return $this->sendResponse(FilmResource::collection($films), 'Films fetched.');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
         $input = $request->all();
         $validator = Validator::make($input, [
@@ -46,7 +46,7 @@ class FilmController extends BaseController
         return $this->sendResponse(new FilmResource($film), 'Film fetched.');
     }
     
-    public function update(Request $request, Film $film)
+    public function update(Request $request, Film $film): JsonResponse
     {
         $input = $request->all();
 
@@ -64,7 +64,7 @@ class FilmController extends BaseController
         return $this->sendResponse(new FilmResource($film), 'Film updated.');
     }
    
-    public function destroy(Film $film)
+    public function destroy(Film $film): JsonResponse
     {
         $film->delete();
 

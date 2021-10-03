@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\API\FilmController;
+use App\Http\Controllers\API\ActorController;
+use App\Http\Controllers\API\GenreController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('films', FilmController::class);
+Route::resource('actors', ActorController::class);
+Route::resource('genres', GenreController::class);
