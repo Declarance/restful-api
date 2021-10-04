@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Models\Genre;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
 use Validator;
 use App\Models\Film;
+use App\Models\Actor;
 use App\Http\Resources\FilmResource;
 
 class FilmController extends BaseController
@@ -16,6 +16,21 @@ class FilmController extends BaseController
     public function index(): JsonResponse
     {
         $films = Film::all();
+
+        if (request()->has('actor')) {
+            $actor_id = request('actor');
+            $actor = Actor::find($actor_id);
+            $films = $actor->films()->getResults();
+        }
+
+        if (request()->has('genre')) {
+            $genre_id = request('genre');
+            $films = $films->where('genre_id', $genre_id);
+        }
+
+        if (request()->has('sort')) {
+            $films = $films->sortBy('title')->all();
+        }
 
         return $this->sendResponse(FilmResource::collection($films), 'Films fetched.');
     }
