@@ -5,7 +5,7 @@
 | **POST** | Add new film | http://localhost:8000/api/films | body: key = 'title', value required |
 | **GET** | Get single film | http://localhost:8000/api/films/2 | |
 | **GET** | Fetch all films | http://localhost:8000/api/films | |
-| **PUT** | Update film | http://localhost:8000/api/films/3?title=Interstellar | params: key = 'title', value required |
+| **PUT** | Update film | http://localhost:8000/api/films/3?title=Interstellar | params: key = 'title', value required; key = 'genre_id, value  |
 | **DELETE** | Delete film | http://localhost:8000/api/films/3 | |
 
 ## Actors

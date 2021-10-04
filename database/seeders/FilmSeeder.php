@@ -17,12 +17,15 @@ class FilmSeeder extends Seeder
         DB::table('films')->insert([
             [
                 'title' => 'The Truth About the Harry Quebert Affair',
+                'genre_id' => 1,
             ],
             [
                 'title' => 'Mary Kills People',
+                'genre_id' => 2,
             ],
             [
                 'title' => 'Game of Thrones',
+                'genre_id' => 5,
             ],
         ]);
     }

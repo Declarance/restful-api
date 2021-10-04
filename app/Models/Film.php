@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Film extends Model
@@ -25,8 +26,8 @@ class Film extends Model
         return $this->belongsToMany(Actor::class, 'films_actors');
     }
 
-    public function genre(): BelongsToMany
+    public function genre(): BelongsTo
     {
-        return $this->belongsToMany(Genre::class, 'films_genres');
+        return $this->belongsTo(Genre::class);
     }
 }
