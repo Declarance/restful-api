@@ -18,8 +18,8 @@ class FilmResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'actors' => $this->actors,
             'genre' => $this->genre,
+            'actors' => $this->actors,
         ];
     }
 }

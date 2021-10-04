@@ -23,8 +23,10 @@ class FilmController extends BaseController
     public function store(Request $request): JsonResponse
     {
         $input = $request->all();
+
         $validator = Validator::make($input, [
-            'title' => 'required',
+            'title' => 'required|string',
+            'genre_id' => 'required|integer',
         ]);
 
         if ($validator->fails()) {
@@ -32,17 +34,20 @@ class FilmController extends BaseController
         }
 
         $film = Film::create($input);
+        $film->genre()->associate($input['genre_id']);
 
-        if ($request->has('genre_id')) {
+        if ($request->has('actor_id')) {
             $validator = Validator::make($input, [
-                'genre_id' => 'required|integer',
+                'actor_id' => 'required|array',
             ]);
 
             if ($validator->fails()) {
                 return $this->sendError($validator->errors());
             }
 
-            $film->genre()->attach($input['genre_id']);
+            foreach ($input['actor_id'] as $actor) {
+                $film->actors()->attach($actor);
+            }
         }
 
         return $this->sendResponse(new FilmResource($film), 'Film created.');
@@ -65,7 +70,7 @@ class FilmController extends BaseController
 
         if ($request->has('title')) {
             $validator = Validator::make($input, [
-                'title' => 'required',
+                'title' => 'required|string',
             ]);
 
             if ($validator->fails()) {
@@ -88,12 +93,30 @@ class FilmController extends BaseController
             $film->genre()->associate($input['genre_id']);
             $film->save();
         }
+
+        if ($request->has('actor_id')) {
+            $validator = Validator::make($input, [
+                'actor_id' => 'required|array',
+            ]);
+
+            if ($validator->fails()) {
+                return $this->sendError($validator->errors());
+            }
+
+            foreach ($input['actor_id'] as $actor) {
+                $film->actors()->toggle($actor);
+            }
+
+            $film->save();
+        }
         
         return $this->sendResponse(new FilmResource($film), 'Film updated.');
     }
    
     public function destroy(Film $film): JsonResponse
     {
+        $film->actors()->detach();
+        $film->save();
         $film->delete();
 
         return $this->sendResponse([], 'Film deleted.');

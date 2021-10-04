@@ -2,10 +2,10 @@
 ## Films
 | Method | Action | Uri example | Info |
 |----------------|---------|----------------|-----|
-| **POST** | Add new film | http://localhost:8000/api/films | body: key = 'title', value required |
+| **POST** | Add new film | http://localhost:8000/api/films | body: key = 'title', value required; key = 'genre_id, value required |
 | **GET** | Get single film | http://localhost:8000/api/films/2 | |
 | **GET** | Fetch all films | http://localhost:8000/api/films | |
-| **PUT** | Update film | http://localhost:8000/api/films/3?title=Interstellar | params: key = 'title', value required; key = 'genre_id, value  |
+| **PUT** | Update film | http://localhost:8000/api/films/3?title=Interstellar | params: key = 'title', value required; key = 'genre_id, value required |
 | **DELETE** | Delete film | http://localhost:8000/api/films/3 | |
 
 ## Actors

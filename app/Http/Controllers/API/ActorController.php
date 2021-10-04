@@ -23,7 +23,7 @@ class ActorController extends BaseController
     {
         $input = $request->all();
         $validator = Validator::make($input, [
-            'name' => 'required',
+            'name' => 'required|string',
         ]);
 
         if ($validator->fails()) {
@@ -51,7 +51,7 @@ class ActorController extends BaseController
         $input = $request->all();
 
         $validator = Validator::make($input, [
-            'name' => 'required',
+            'name' => 'required|string',
         ]);
 
         if($validator->fails()){

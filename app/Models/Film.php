@@ -14,11 +14,13 @@ class Film extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'title'
+        'title',
+        'genre_id',
     ];
 
     protected $hidden = [
-        'pivot'
+        'pivot',
+        'genre_id'
     ];
 
     public function actors(): BelongsToMany
