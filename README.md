@@ -1,4 +1,9 @@
 # REST API
+##Run
+- php artisan migrate
+- php artisan db:seed
+- php artisan serve
+
 ## Films
 | Method | Action | Uri example | Info |
 |----------------|---------|----------------|-----|
