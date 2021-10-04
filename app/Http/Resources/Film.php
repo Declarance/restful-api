@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class Film extends JsonResource
@@ -17,6 +18,8 @@ class Film extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
+            'actors' => $this->actors,
+            'genre' => $this->genre,
         ];
     }
 }

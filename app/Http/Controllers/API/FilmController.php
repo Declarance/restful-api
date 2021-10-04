@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Models\Genre;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
@@ -69,5 +70,20 @@ class FilmController extends BaseController
         $film->delete();
 
         return $this->sendResponse([], 'Film deleted.');
+    }
+
+    public function sorted()
+    {
+        $films = Film::all()->sortBy('name');
+
+        return $this->sendResponse(FilmResource::collection($films), 'Films fetched.');
+    }
+
+    public function genre($id): JsonResponse
+    {
+        $genre = Genre::find($id);
+        $films = Film::all()->where($this->genre($id));
+
+        return $this->sendResponse(FilmResource::collection($films), 'Films fetched');
     }
 }

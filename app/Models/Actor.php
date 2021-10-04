@@ -13,8 +13,12 @@ class Actor extends Model
         'name'
     ];
 
+    protected $hidden = [
+        'pivot'
+    ];
+
     public function film()
     {
-        return $this->hasMany(Film::class);
+        return $this->belongsToMany(Film::class, 'films_actors');
     }
 }

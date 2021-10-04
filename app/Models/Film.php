@@ -15,13 +15,17 @@ class Film extends Model
         'title'
     ];
 
+    protected $hidden = [
+        'pivot'
+    ];
+
     public function actors()
     {
-        return $this->hasMany(Actor::class);
+        return $this->belongsToMany(Actor::class, 'films_actors');
     }
 
     public function genre()
     {
-        return $this->belongsTo(Genre::class);
+        return $this->belongsToMany(Genre::class, 'films_genres');
     }
 }

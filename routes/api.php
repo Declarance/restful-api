@@ -17,5 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('films', FilmController::class);
+Route::get('films/sorted', [FilmController::class, 'sorted']);
 Route::resource('actors', ActorController::class);
 Route::resource('genres', GenreController::class);
+Route::get('films/genres/{genre}', [FilmController::class, 'genre']);
