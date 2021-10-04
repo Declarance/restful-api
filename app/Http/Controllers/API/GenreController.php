@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
 use Validator;
 use App\Models\Genre;
-use App\Http\Resources\Genre as GenreResource;
+use App\Http\Resources\GenreResource;
 
 class GenreController extends BaseController
 {

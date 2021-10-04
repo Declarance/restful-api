@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Models\Genre;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
 use Validator;
 use App\Models\Film;
-use App\Http\Resources\Film as FilmResource;
+use App\Http\Resources\FilmResource;
 
 class FilmController extends BaseController
 {
@@ -50,7 +49,6 @@ class FilmController extends BaseController
     public function update(Request $request, Film $film): JsonResponse
     {
         $input = $request->all();
-
         $validator = Validator::make($input, [
             'title' => 'required',
         ]);
@@ -70,20 +68,5 @@ class FilmController extends BaseController
         $film->delete();
 
         return $this->sendResponse([], 'Film deleted.');
-    }
-
-    public function sorted()
-    {
-        $films = Film::all()->sortBy('name');
-
-        return $this->sendResponse(FilmResource::collection($films), 'Films fetched.');
-    }
-
-    public function genre($id): JsonResponse
-    {
-        $genre = Genre::find($id);
-        $films = Film::all()->where($this->genre($id));
-
-        return $this->sendResponse(FilmResource::collection($films), 'Films fetched');
     }
 }

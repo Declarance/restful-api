@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
 use Validator;
 use App\Models\Actor;
-use App\Http\Resources\Actor as ActorResource;
+use App\Http\Resources\ActorResource;
 
 class ActorController extends BaseController
 {

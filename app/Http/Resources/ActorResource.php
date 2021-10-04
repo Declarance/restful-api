@@ -4,12 +4,12 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Actor extends JsonResource
+class ActorResource extends JsonResource
 {
     /**
      * Transform the resource collection into an array.
      *
-     * @param  Request  $request
+     * @param Request $request
      * @return array
      */
     public function toArray($request): array
@@ -17,6 +17,7 @@ class Actor extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'films' => $this->films,
         ];
     }
 }

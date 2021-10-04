@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Genre extends JsonResource
+class GenreResource extends JsonResource
 {
     /**
      * Transform the resource collection into an array.
@@ -17,6 +17,7 @@ class Genre extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'films' => $this->films,
         ];
     }
 }
