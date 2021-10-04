@@ -1,6 +1,5 @@
 # REST API
-____
-#Films
+## Films
 | Method | Action | Uri example | Info |
 |----------------|---------|----------------|-----|
 | **POST** | Add new film | http://localhost:8000/api/films | body: key = 'title', value required |
@@ -9,7 +8,7 @@ ____
 | **PUT** | Update film | http://localhost:8000/api/films/3?title=Interstellar | params: key = 'title', value required |
 | **DELETE** | Delete film | http://localhost:8000/api/films/3 | |
 
-#Actors
+## Actors
 | Method | Action | Uri example | Info |
 |----------------|---------|----------------|-----|
 | **POST** | Add new actor | http://localhost:8000/api/actors | body: key = 'name', value required |
@@ -18,7 +17,7 @@ ____
 | **PUT** | Update actor | http://localhost:8000/api/actors/1?name=Adolf | params: key = 'actors', value required |
 | **DELETE** | Delete actor | http://localhost:8000/api/actors/2 | |
 
-#Genres
+## Genres
 | Method | Action | Uri example | Info |
 |----------------|---------|----------------|-----|
 | **POST** | Add new genre | http://localhost:8000/api/genres | body: key = 'name', value required |
